@@ -9,7 +9,9 @@
 </head>
 
 <body class="bg-gray-100 transition-colors duration-300" id="body">
-    <div class="bg-blue-500 text-white text-center py-4 text-xl font-bold">Prestasi Moklet</div>
+    <div class="bg-blue-500 text-white text-center py-4 text-xl font-bold">
+        Prestasi Moklet
+    </div>
 
     <div class="flex flex-col md:flex-row p-5 gap-5 rounded-lg m-5 p-5 relative">
         <button onclick="prevVideo()" class="absolute left-5 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full z-10">❮</button>
@@ -21,11 +23,11 @@
             <button onclick="nextVideo()" class="absolute right-5 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-full z-10">❯</button>
         </div>
         <div class="flex-1 space-y-4 bg-red-300 p-5 rounded-lg">
-            <div class="bg-white p-4 rounded-lg shadow text-center">Prestasi 1</div>
-            <div class="bg-white p-4 rounded-lg shadow text-center">Prestasi 2</div>
-            <div class="bg-white p-4 rounded-lg shadow text-center">Prestasi 3</div>
-            <div class="bg-white p-4 rounded-lg shadow text-center">Prestasi 4</div>
-            <div class="bg-white p-4 rounded-lg shadow text-center">Prestasi 5</div>
+            <div class="bg-white p-4 rounded-lg shadow text-center" onclick="changeVideo(0)">Prestasi 1</div>
+            <div class="bg-white p-4 rounded-lg shadow text-center" onclick="changeVideo(1)">Prestasi 2</div>
+            <div class="bg-white p-4 rounded-lg shadow text-center" onclick="changeVideo(2)">Prestasi 3</div>
+            <div class="bg-white p-4 rounded-lg shadow text-center" onclick="changeVideo(3)">Prestasi 4</div>
+            <div class="bg-white p-4 rounded-lg shadow text-center" onclick="changeVideo(4)">Prestasi 5</div>
         </div>
     </div>
 
@@ -35,20 +37,28 @@
     </div>
 
     <script>
-        let videoLinks = [
-            "https://www.youtube.com/embed/0an7kovsPeQ?si=AQ2ZoMKDc4k4mpVY",
-            "https://www.youtube.com/embed/EdrU_4K9e6M?si=acYJCui3-U7UrifK"
+        let prestasiVideos = [
+            "https://www.youtube.com/embed/N04giqDZzdM?si=26YR-JUyAiAGu1a5",
+            "https://www.youtube.com/embed/EdrU_4K9e6M?si=acYJCui3-U7UrifK",
+            "https://www.youtube.com/embed/U8d1QrngA2E?si=60bJFDdlrvnnBON9", 
+            "https://www.youtube.com/embed/9FvPX_XhsNE?si=jYN3MamDXUIQcUWP",
+            "https://www.youtube.com/embed/UwVau7nlWGs?si=RHmsyUuxNDClQTEA"
         ];
-        let currentVideo = 0;
-
-        function prevVideo() {
-            currentVideo = (currentVideo - 1 + videoLinks.length) % videoLinks.length;
-            document.getElementById("videoFrame").src = videoLinks[currentVideo];
+        let currentVideoIndex = 0;
+        
+        function changeVideo(index) {
+            currentVideoIndex = index;
+            document.getElementById("videoFrame").src = prestasiVideos[index];
         }
-
+        
+        function prevVideo() {
+            currentVideoIndex = (currentVideoIndex - 1 + prestasiVideos.length) % prestasiVideos.length;
+            document.getElementById("videoFrame").src = prestasiVideos[currentVideoIndex];
+        }
+        
         function nextVideo() {
-            currentVideo = (currentVideo + 1) % videoLinks.length;
-            document.getElementById("videoFrame").src = videoLinks[currentVideo];
+            currentVideoIndex = (currentVideoIndex + 1) % prestasiVideos.length;
+            document.getElementById("videoFrame").src = prestasiVideos[currentVideoIndex];
         }
     </script>
 </body>
